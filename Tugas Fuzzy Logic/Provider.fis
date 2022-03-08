@@ -1,0 +1,69 @@
+[System]
+Name='Provider'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=3
+NumRules=7
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Biaya'
+Range=[0 10]
+NumMFs=3
+MF1='Mahal':'trimf',[-3 0 3]
+MF2='Rata-rata':'trapmf',[2 3 7 8]
+MF3='Murah':'trimf',[7 10 13]
+
+[Input2]
+Name='Kecepatan_Internet'
+Range=[0 100]
+NumMFs=3
+MF1='Lambat':'trimf',[-40 0 40]
+MF2='Rata-rata':'trapmf',[30 40 60 70]
+MF3='Cepat':'trimf',[60 100 140]
+
+[Input3]
+Name='Pelayanan'
+Range=[0 10]
+NumMFs=3
+MF1='Buruk':'trimf',[-4 0 4]
+MF2='Biasa':'trapmf',[2 4 6 8]
+MF3='Bagus':'trimf',[6 10 14]
+
+[Output1]
+Name='Kepuasan_Pelanggan'
+Range=[0 10]
+NumMFs=3
+MF1='Tidak_Puas':'trimf',[-4 0 4]
+MF2='Cukup':'trimf',[2 5 8]
+MF3='Puas':'trimf',[6 10 14]
+
+[Output2]
+Name='Rating_Provider'
+Range=[0 5]
+NumMFs=3
+MF1='Buruk':'trimf',[-2 0 2]
+MF2='Rata-rata':'trimf',[1.5 2.5 3.5]
+MF3='Bagus':'trimf',[3 5 7]
+
+[Output3]
+Name='Jumlah_Pelanggan'
+Range=[0 10]
+NumMFs=3
+MF1='Berkurang':'trimf',[-4 0 4]
+MF2='Tetap':'trimf',[3 5 7]
+MF3='Bertambah':'trimf',[6 10 14]
+
+[Rules]
+1 1 1, 1 1 1 (1) : 1
+2 2 2, 2 2 2 (1) : 1
+3 3 3, 3 3 3 (1) : 1
+1 2 3, 2 3 2 (1) : 1
+2 3 1, 2 1 2 (1) : 1
+3 1 2, 2 2 2 (1) : 1
+2 3 3, 3 3 3 (1) : 1
